@@ -7,7 +7,11 @@ public class Zone {
     private boolean isGym;
     private boolean isPool;
     private boolean isGroupLessons;
-    public Zone(boolean  isGym, boolean isPool, boolean isGroupLessons) {}
+    public Zone(boolean  isGym, boolean isPool, boolean isGroupLessons) {
+        this.setGym(isGym);
+        this.setPool(isPool);
+        this.setGroupLessons(isGroupLessons);
+    }
 
     public boolean getIsGym() {
         return isGym;
@@ -35,31 +39,51 @@ public class Zone {
     public static boolean isCorrectZone(Subscription subscription, Visit visit) {
         if (visit.getVisitZone().getIsGym()) {
             if (subscription.getType().getZone().getIsGym()) {
-                System.out.println(subscription.getOwner() + " зашёл в тренажерный зал");
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + " не может посетить тренажерный зал. " +
-                        "Абонемент не включает эту зону");
+                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
                 return false;
             }
         } else if (visit.getVisitZone().getIsPool()) {
             if (subscription.getType().getZone().getIsPool()) {
-                System.out.println(subscription.getOwner() + " зашёл в бассейн");
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + " не может посетить бассейн. " +
-                        "Абонемент не включает эту зону");
+                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
                 return false;
             }
         } else {
             if (subscription.getType().getZone().getIsGroupLessons()) {
-                System.out.println(subscription.getOwner() + " пришел на групповое занятие");
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + " не может посетить бассейн. " +
-                        "Абонемент не включает эту зону");
+                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
                 return false;
             }
         }
+    }
+    public String getTrueZoneName() {
+        if (isGym&&isPool&&isGroupLessons)
+            return "тренажeрный зал, бассейн и зал групповых тренировок";
+        else if (isGym&&isPool)
+            return "тренажерный зал и бассейн";
+        else if (isGym&&isGroupLessons)
+            return "тренажерный зал и зал групповых тренировок";
+        else if (isPool&&isGroupLessons)
+            return "бассейн и зал групповых тренировок";
+        else if (isGym) {
+             return "тренажерный зал";
+         }
+        else if (isPool) {
+             return "бассейн";
+         }
+        else if (isGroupLessons) {
+             return "зал групповых тренировок";
+         }
+         return "Ошибка";
+    }
+
+
+    @Override
+    public String toString() {
+        return getTrueZoneName();
     }
 }

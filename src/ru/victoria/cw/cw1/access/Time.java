@@ -10,7 +10,10 @@ public class Time {
     private LocalTime fromTime;
     private LocalTime toTime;
     public Time(LocalTime fromTime, LocalTime toTime) {
+        this.setFromTime(fromTime);
+        this.setToTime(toTime);
     }
+    public Time(){}
 
     public LocalTime getFromTime() {
         return fromTime;
@@ -32,11 +35,11 @@ public class Time {
             if (subscription.getType().getTime().getToTime().isAfter(visit.getVisitTime())) {
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + " не может попасть в фитнес-центр. Сейчас слишком поздно для визита");
+                System.out.println("Сейчас слишком поздно для визита");
                 return false;
             }
         } else {
-            System.out.println(subscription.getOwner() + " не может попасть в фитнес-центр. Сейчас слишком рано для визита");
+            System.out.println("Сейчас слишком рано для визита");
             return false;
         }
     }

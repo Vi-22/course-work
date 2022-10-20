@@ -1,6 +1,7 @@
 package ru.victoria.cw.cw1.subscription;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Owner {
     private String name;
@@ -12,7 +13,7 @@ public class Owner {
     public String toString() {
         return "Владелец: " + name + " "
                 + surName + ", "
-                + birthday;
+                + birthday.format(DateTimeFormatter.ofPattern("dd:MM:yy"));
     }
 
     public String getName() {
@@ -48,12 +49,13 @@ public class Owner {
         this.birthday = birthday;
     }
 
-    public void newOwner() {
+    public void generateOwner() {
         String[] names = {"Федор", "Иван", "Юрий", "Тимофей", "Олег", "Валерий"};
         String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко"};
         this.name = names[(int) (Math.random() * names.length)];
         this.surName = surNames[(int) (Math.random() * surNames.length)];
-        this.birthday = LocalDate.of((int) (1940 + Math.random() * 50), (int) (1+ Math.random() * 11), (int) (1+Math.random() * 27));
+        this.birthday = LocalDate.of((int) (1940 + Math.random() * 50),
+                (int) (1+ Math.random() * 11), (int) (1+Math.random() * 27));
     }
 }
 

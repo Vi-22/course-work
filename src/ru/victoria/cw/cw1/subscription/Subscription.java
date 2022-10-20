@@ -30,7 +30,7 @@ public class Subscription {
                    startDate.getMonthValue()), (int) (1 + Math.random() * 27));
   }
   this.owner = new Owner();
-  this.owner.newOwner();
+  this.owner.generateOwner();
  }
 
  public Type getType() {

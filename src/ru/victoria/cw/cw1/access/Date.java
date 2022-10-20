@@ -9,11 +9,11 @@ public class Date {
             if (subscription.getEndDate().isAfter(visit.getVisitDate())) {
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + " не может попасть в фитнес-центр. Абонемент истек");
+                System.out.println("Ваш абонемент истек");
                 return false;
             }
         } else {
-            System.out.println(subscription.getOwner() + " не может попасть в фитнес-центр. Срок действия абонемента еще не начался");
+            System.out.println("Срок действия абонемента еще не начался");
             return false;
         }
     }
