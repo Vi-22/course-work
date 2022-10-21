@@ -1,6 +1,5 @@
 package ru.victoria.cw.cw1.fitness;
 
-import ru.victoria.cw.cw1.actions.Visit;
 import ru.victoria.cw.cw1.subscription.Subscription;
 
 import java.util.Arrays;
@@ -46,7 +45,7 @@ public class Fitness {
         }
         return i;
     }
-    private boolean isEnoughPlaces(Visit visit) {
+    private boolean isEnoughPlaces(Exit visit) {
         if (visit.getVisitZone().getIsGym()&&isPlacesInGym()) {
             return true;
         } else if (visit.getVisitZone().getIsPool()&&isPlacesInPool()) {
@@ -85,7 +84,7 @@ public class Fitness {
         System.out.println("Пока вы не можете зайти. В бассейне зале нет мест");
         return false;
     }
-    private boolean isCorrectDate(Subscription subscription, Visit visit) {
+    private boolean isCorrectDate(Subscription subscription, Exit visit) {
         if (subscription.getRegistrationDate().isBefore(visit.getVisitDate())) {
             if (subscription.getExpirationDate().isAfter(visit.getVisitDate())) {
                 return true;
@@ -98,7 +97,7 @@ public class Fitness {
             return false;
         }
     }
-    private boolean isCorrectZone(Subscription subscription, Visit visit) {
+    private boolean isCorrectZone(Subscription subscription, Exit visit) {
         if (visit.getVisitZone().getIsGym()) {
             if (subscription.getType().getZone().getIsGym()) {
                 return true;
@@ -122,7 +121,7 @@ public class Fitness {
             }
         }
     }
-    private boolean isCorrectTime(Subscription subscription, Visit visit) {
+    private boolean isCorrectTime(Subscription subscription, Exit visit) {
         if (subscription.getType().getTime().getFromTime().isBefore(visit.getVisitTime())) {
             if (subscription.getType().getTime().getToTime().isAfter(visit.getVisitTime())) {
                 return true;
@@ -135,7 +134,7 @@ public class Fitness {
             return false;
         }
     }
-    private boolean isAccess(Subscription subscription, Visit visit) {
+    private boolean isAccess(Subscription subscription, Exit visit) {
         if (isCorrectDate(subscription,visit) && isCorrectTime(subscription, visit)
                 && isCorrectZone(subscription, visit)&&isEnoughPlaces(visit)) {
             System.out.println("Вы успешно вошли");
@@ -144,7 +143,7 @@ public class Fitness {
             return false;
         }
     }
-    public void setExitToFitness(Subscription subscription, Visit visit) {
+    public void setExitToFitness(Subscription subscription, Exit visit) {
         if (isAccess(subscription, visit)) {
             if (visit.getVisitZone().getIsGym()) {
                 this.gymSubscriptions[foundFreePlaces(gymSubscriptions)] = subscription;

@@ -1,4 +1,4 @@
-package ru.victoria.cw.cw1.fitness;
+package ru.victoria.cw.cw1.subscription;
 
 public class Zone {
     private boolean isGym;

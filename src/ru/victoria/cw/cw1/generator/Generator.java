@@ -1,7 +1,7 @@
 package ru.victoria.cw.cw1.generator;
 
-import ru.victoria.cw.cw1.actions.Visit;
-import ru.victoria.cw.cw1.fitness.Zone;
+import ru.victoria.cw.cw1.fitness.Exit;
+import ru.victoria.cw.cw1.subscription.Zone;
 import ru.victoria.cw.cw1.subscription.Owner;
 import ru.victoria.cw.cw1.subscription.Subscription;
 import ru.victoria.cw.cw1.subscription.Type;
@@ -36,11 +36,11 @@ public class Generator {
                 (int) (1+ Math.random() * 11), (int) (1+Math.random() * 27));
         return new Owner(firstName,lastName, birthday);
     }
-    public static Visit generateRandomVisit () {
-        LocalDate visitDate = LocalDate.now();
-        LocalTime visitTime = LocalTime.now();
-        Zone visitZone = generateRandomZone();
-        return new Visit(visitDate,visitTime,visitZone);
+    public static Exit generateRandomExit () {
+        LocalDate exitDate = LocalDate.now();
+        LocalTime exitTime = LocalTime.now();
+        Zone exitZone = generateRandomZone();
+        return new Exit(exitDate,exitTime,exitZone);
     }
     public static Zone generateRandomZone(){
         int random = (int) (Math.random() * 3);

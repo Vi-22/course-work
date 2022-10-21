@@ -1,8 +1,5 @@
 package ru.victoria.cw.cw1.subscription;
 
-import ru.victoria.cw.cw1.fitness.Time;
-import ru.victoria.cw.cw1.fitness.Zone;
-
 import java.time.LocalTime;
 
 public enum Type {
