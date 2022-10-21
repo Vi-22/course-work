@@ -15,7 +15,7 @@ public class Application {
         for (int i = 0; i < clientSubscriptions.length; i++) {
             clientSubscriptions[i] = Generator.generateSubscription();
             System.out.println(clientSubscriptions[i]);
-            Exit visit = Generator.generateRandomVisit();
+            Exit visit = Generator.generateRandomExit();
             System.out.println(visit);
             fitness.setExitToFitness(clientSubscriptions[i],visit);
         }
