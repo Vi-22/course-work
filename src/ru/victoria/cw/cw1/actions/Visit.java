@@ -1,6 +1,6 @@
 package ru.victoria.cw.cw1.actions;
 
-import ru.victoria.cw.cw1.access.Zone;
+import ru.victoria.cw.cw1.fitness.Zone;
 import ru.victoria.cw.cw1.subscription.Subscription;
 
 import java.time.LocalDate;
@@ -41,23 +41,7 @@ public class Visit {
     public void setVisitZone(Zone visitZone) {
         this.visitZone = visitZone;
     }
-    public void generateRandomVisit (Subscription subscription) {
-        this.visitDate = LocalDate.now();
-        this.visitTime = LocalTime.now();
-        this.visitZone = randomZone();
 
-    }
-    public Zone randomZone(){
-        int random = (int) (Math.random() * 3);
-        if (random == 0) {
-            return new Zone(true, false, false);
-        }
-        else if (random == 1) {
-            return new Zone(false, true,false);
-        } else {
-            return new Zone(false, false,true);
-        }
-    }
 
     @Override
     public String toString() {

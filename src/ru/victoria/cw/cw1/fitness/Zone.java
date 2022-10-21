@@ -1,7 +1,4 @@
-package ru.victoria.cw.cw1.access;
-
-import ru.victoria.cw.cw1.actions.Visit;
-import ru.victoria.cw.cw1.subscription.Subscription;
+package ru.victoria.cw.cw1.fitness;
 
 public class Zone {
     private boolean isGym;
@@ -36,31 +33,7 @@ public class Zone {
     public void setGroupLessons(boolean isGroupLessons) {
         this.isGroupLessons = isGroupLessons;
     }
-    public static boolean isCorrectZone(Subscription subscription, Visit visit) {
-        if (visit.getVisitZone().getIsGym()) {
-            if (subscription.getType().getZone().getIsGym()) {
-                return true;
-            } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
-                return false;
-            }
-        } else if (visit.getVisitZone().getIsPool()) {
-            if (subscription.getType().getZone().getIsPool()) {
-                return true;
-            } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
-                return false;
-            }
-        } else {
-            if (subscription.getType().getZone().getIsGroupLessons()) {
-                return true;
-            } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
-                return false;
-            }
-        }
-    }
-    public String getTrueZoneName() {
+    private String getTrueZoneName() {
         if (isGym&&isPool&&isGroupLessons)
             return "тренажeрный зал, бассейн и зал групповых тренировок";
         else if (isGym&&isPool)

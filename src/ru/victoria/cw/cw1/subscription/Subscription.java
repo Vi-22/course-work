@@ -4,30 +4,15 @@ import java.time.LocalDate;
 
 public class Subscription {
  private Type type;
- private LocalDate startDate;
- private LocalDate endDate;
+ private LocalDate registrationDate;
+ private LocalDate expirationDate;
  private Owner owner;
 
- public Subscription(Type type, LocalDate startDate, LocalDate endDate, Owner owner) {
- }
-
- public Subscription() {
- }
-
- public void generateSubscription() {
-  Type types[] = Type.values();
-  this.type = types[(int) (Math.random() * types.length)];
-  this.startDate = LocalDate.of(2022, (int) (1 + Math.random() * 11),(int) (1 + Math.random() * 27));
-  if (type==Type.ONE_DAY) {
-      this.endDate = LocalDate.of(startDate.getYear(),
-           startDate.getMonthValue(), startDate.getDayOfMonth() + 1);
-  } else {
-      this.endDate = LocalDate.of(startDate.getYear(),
-           (int) ((Math.random()) * (11 - startDate.getMonthValue()) +
-                   startDate.getMonthValue()), (int) (1 + Math.random() * 27));
-  }
-  this.owner = new Owner();
-  this.owner.generateOwner();
+ public Subscription(Type type, LocalDate registrationDate, LocalDate expirationDate, Owner owner) {
+  this.setType(type);
+  this.setRegistrationDate(registrationDate);
+  this.setExpirationDate(expirationDate);
+  this.setOwner(owner);
  }
 
  public Type getType() {
@@ -38,20 +23,20 @@ public class Subscription {
   this.type = type;
  }
 
- public LocalDate getStartDate() {
-  return startDate;
+ public LocalDate getRegistrationDate() {
+  return registrationDate;
  }
 
- public void setStartDate(LocalDate startDate) {
-  this.startDate = startDate;
+ public void setRegistrationDate(LocalDate startDate) {
+  this.registrationDate = startDate;
  }
 
- public LocalDate getEndDate() {
-  return endDate;
+ public LocalDate getExpirationDate() {
+  return expirationDate;
  }
 
- public void setEndDate(LocalDate endDate) {
-  this.endDate = endDate;
+ public void setExpirationDate(LocalDate endDate) {
+  this.expirationDate = endDate;
  }
 
  public Owner getOwner() {
@@ -65,8 +50,8 @@ public class Subscription {
  @Override
  public String toString() {
   return "Абонемент: " + type +
-          ", с " + startDate +
-          ", по " + endDate +
+          ", с " + registrationDate +
+          ", по " + expirationDate +
           ", " + owner;
  }
 }

@@ -4,38 +4,43 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Owner {
-    private String name;
-    private String surName;
+    private String firstName;
+    private String lastName;
     private LocalDate birthday;
 
+    public Owner(String firstName, String lastName, LocalDate birthday) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setBirthday(birthday);
+    }
 
     @Override
     public String toString() {
-        return "Владелец: " + name + " "
-                + surName + ", "
+        return "Владелец: " + firstName + " "
+                + lastName + ", "
                 + birthday.format(DateTimeFormatter.ofPattern("dd:MM:yy"));
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("Необходимо задать значение для name");
+    public void setFirstName(String firstName) {
+        if (firstName == null) {
+            throw new IllegalArgumentException("Необходимо задать значение для firstName");
         }
-        this.name = name;
+        this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurName(String surName) {
-        if (name == null) {
-            throw new IllegalArgumentException("Необходимо задать значение для surName");
+    public void setLastName(String lastName) {
+        if (firstName == null) {
+            throw new IllegalArgumentException("Необходимо задать значение для lastName");
         }
-        this.surName = surName;
+        this.lastName = lastName;
     }
 
     public LocalDate getBirthday() {
@@ -44,19 +49,12 @@ public class Owner {
 
     public void setBirthday(LocalDate birthday) {
         if (birthday == null) {
-            throw new IllegalArgumentException("Необходимо задать значение для patronymic");
+            throw new IllegalArgumentException("Необходимо задать значение для birthday");
         }
         this.birthday = birthday;
     }
 
-    public void generateOwner() {
-        String[] names = {"Федор", "Александра","Иван","Юлия","Юрий", "Тимофей", "Олег", "Валерий", "Татьяна"};
-        String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко", "Шутка", "Маршрутка"};
-        this.name = names[(int) (Math.random() * names.length)];
-        this.surName = surNames[(int) (Math.random() * surNames.length)];
-        this.birthday = LocalDate.of((int) (1940 + Math.random() * 50),
-                (int) (1+ Math.random() * 11), (int) (1+Math.random() * 27));
-    }
+
 }
 
 
