@@ -78,7 +78,7 @@ public class Zone {
         else if (isGroupLessons) {
              return "зал групповых тренировок";
          }
-         return "Ошибка";
+         return "зона отсутствует";
     }
 
 
