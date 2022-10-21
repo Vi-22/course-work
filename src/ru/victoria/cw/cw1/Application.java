@@ -11,13 +11,13 @@ public class Application {
         Subscription[] poolSubscriptions = new Subscription[20];
         Subscription[] groupLessonsSubscriptions = new Subscription[20];
         Fitness fitness = new Fitness(gymSubscriptions,poolSubscriptions,groupLessonsSubscriptions);
-        Subscription[] subscriptions = new Subscription[(int)(50+Math.random()*10000)];
-        for (int i = 0; i < subscriptions.length;i++) {
-            subscriptions[i] = Generator.generateSubscription();
-            System.out.println(subscriptions[i]);
+        Subscription[] clientSubscriptions = new Subscription[(int)(50+Math.random()*10000)];
+        for (int i = 0; i < clientSubscriptions.length; i++) {
+            clientSubscriptions[i] = Generator.generateSubscription();
+            System.out.println(clientSubscriptions[i]);
             Visit visit = Generator.generateRandomVisit();
             System.out.println(visit);
-            fitness.setExitToFitness(subscriptions[i],visit);
+            fitness.setExitToFitness(clientSubscriptions[i],visit);
         }
         fitness.printToList();
         fitness.fitnessCloused();
