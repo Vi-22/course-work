@@ -50,8 +50,8 @@ public class Owner {
     }
 
     public void generateOwner() {
-        String[] names = {"Федор", "Иван", "Юрий", "Тимофей", "Олег", "Валерий"};
-        String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко"};
+        String[] names = {"Федор", "Александра","Иван","Юлия","Юрий", "Тимофей", "Олег", "Валерий", "Татьяна"};
+        String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко", "Шутка", "Маршрутка"};
         this.name = names[(int) (Math.random() * names.length)];
         this.surName = surNames[(int) (Math.random() * surNames.length)];
         this.birthday = LocalDate.of((int) (1940 + Math.random() * 50),

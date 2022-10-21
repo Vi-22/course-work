@@ -19,12 +19,12 @@ public class Place {
         return false;
     }
     public static boolean isPlacesInPool() {
-        for (Subscription subscription : fitness.getGymSubscriptions()) {
+        for (Subscription subscription : fitness.getPoolSubscriptions()) {
             if (subscription == null) {
                 return true;
             }
         }
-        System.out.println("Пока вы не можете зайти. В бассейне зале нет мест");
+        System.out.println("Пока вы не можете зайти. В бассейне нет мест");
         return false;
     }
     public static boolean isPlacesInGroupLessons() {
