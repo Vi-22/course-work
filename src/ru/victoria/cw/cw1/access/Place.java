@@ -7,8 +7,17 @@ import ru.victoria.cw.cw1.subscription.Subscription;
 public class Place {
     static Fitness fitness;
     public Place (Fitness fitness) {
-        this.fitness=fitness;
+        Place.setFitness(fitness);
     }
+
+    public Fitness getFitness() {
+        return fitness;
+    }
+
+    public static void setFitness(Fitness fitness) {
+        Place.fitness = fitness;
+    }
+
     public static boolean isPlacesInGym() {
         for (Subscription subscription : fitness.getGymSubscriptions()) {
             if (subscription == null) {

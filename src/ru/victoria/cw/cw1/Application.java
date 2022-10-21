@@ -7,9 +7,9 @@ import ru.victoria.cw.cw1.subscription.Subscription;
 
 public class Application {
     public static void main(String[] args6) {
-        Subscription gymSubscriptions[] = new Subscription[20];
-        Subscription poolSubscriptions[] = new Subscription[20];
-        Subscription groupLessonsSubscriptions[] = new Subscription[20];
+        Subscription[] gymSubscriptions = new Subscription[20];
+        Subscription[] poolSubscriptions = new Subscription[20];
+        Subscription[] groupLessonsSubscriptions = new Subscription[20];
         Fitness fitness = new Fitness(gymSubscriptions,poolSubscriptions,groupLessonsSubscriptions);
         Place place = new Place(fitness);
         Subscription[] subscriptions = new Subscription[(int)(50+Math.random()*10000)];

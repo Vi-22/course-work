@@ -6,9 +6,9 @@ import ru.victoria.cw.cw1.access.Zone;
 import java.time.LocalTime;
 
 public enum Type {
-    ONE_DAY(new Time(LocalTime.of(8,0), LocalTime.of(23,30)), new Zone(true, true,false)),
-    DAY(new Time(LocalTime.of(8,0), LocalTime.of(23,30)), new Zone(true, false, true)),
-    FULL(new Time(LocalTime.of(8,0), LocalTime.of(23,30)), new Zone(true,true,true));
+    ONE_DAY(new Time(LocalTime.of(8,22), LocalTime.of(23,30)), new Zone(true, true,false)),
+    DAY(new Time(LocalTime.of(8,16), LocalTime.of(23,30)), new Zone(true, false, true)),
+    FULL(new Time(LocalTime.of(8,22), LocalTime.of(23,30)), new Zone(true,true,true));
 
     private Time time;
     private Zone zone;
