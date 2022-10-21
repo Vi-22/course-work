@@ -2,7 +2,6 @@ package ru.victoria.cw.cw1.access;
 
 import ru.victoria.cw.cw1.actions.Visit;
 import ru.victoria.cw.cw1.subscription.Subscription;
-import ru.victoria.cw.cw1.subscription.Type;
 
 import java.time.LocalTime;
 

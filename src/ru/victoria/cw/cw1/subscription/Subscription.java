@@ -1,9 +1,6 @@
 package ru.victoria.cw.cw1.subscription;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Date;
 
 public class Subscription {
  private Type type;

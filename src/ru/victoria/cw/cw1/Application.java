@@ -5,8 +5,6 @@ import ru.victoria.cw.cw1.actions.Visit;
 import ru.victoria.cw.cw1.fitness.Fitness;
 import ru.victoria.cw.cw1.subscription.Subscription;
 
-import java.util.Arrays;
-
 public class Application {
     public static void main(String[] args6) {
         Subscription gymSubscriptions[] = new Subscription[20];
