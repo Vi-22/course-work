@@ -191,7 +191,7 @@ public class Fitness {
         }
         System.out.println("Зал групповых тренировок:");
         for (int i = 0; i < groupLessonsSubscriptions.length; i++) {
-            if (this.gymSubscriptions[i] == null) {
+            if (this.groupLessonsSubscriptions[i] == null) {
                 System.out.println("свободное место");
             } else {
                 System.out.println(this.groupLessonsSubscriptions[i]);
