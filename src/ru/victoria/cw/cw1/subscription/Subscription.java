@@ -1,6 +1,7 @@
 package ru.victoria.cw.cw1.subscription;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Subscription {
  private SubscriptionType type;
@@ -20,6 +21,9 @@ public class Subscription {
  }
 
  public void setType(SubscriptionType type) {
+  if (type == null) {
+   throw new IllegalArgumentException("Необходимо задать type aбонемента");
+  }
   this.type = type;
  }
 
@@ -27,16 +31,22 @@ public class Subscription {
   return registrationDate;
  }
 
- public void setRegistrationDate(LocalDate startDate) {
-  this.registrationDate = startDate;
+ public void setRegistrationDate(LocalDate registrationDate) {
+  if (registrationDate == null) {
+   throw new IllegalArgumentException("Необходимо задать registrationDate aбонемента");
+  }
+  this.registrationDate = registrationDate;
  }
 
  public LocalDate getExpirationDate() {
   return expirationDate;
  }
 
- public void setExpirationDate(LocalDate endDate) {
-  this.expirationDate = endDate;
+ public void setExpirationDate(LocalDate expirationDate) {
+  if (expirationDate == null) {
+   throw new IllegalArgumentException("expirationDate aбонемента не может быть null");
+  }
+  this.expirationDate = expirationDate;
  }
 
  public Owner getOwner() {
@@ -44,14 +54,17 @@ public class Subscription {
  }
 
  public void setOwner(Owner owner) {
+  if (expirationDate == null) {
+   throw new IllegalArgumentException("Owner aбонемента не может быть null");
+  }
   this.owner = owner;
  }
 
  @Override
  public String toString() {
   return "Абонемент: " + type +
-          ", с " + registrationDate +
-          ", по " + expirationDate +
+          ", с " + registrationDate.format(DateTimeFormatter.ofPattern("dd.MM.yy")) +
+          " по " + expirationDate.format(DateTimeFormatter.ofPattern("dd.MM.yy")) +
           ", " + owner;
  }
 }

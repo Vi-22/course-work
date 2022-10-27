@@ -14,13 +14,6 @@ public class Owner {
         setBirthday(birthday);
     }
 
-    @Override
-    public String toString() {
-        return "Владелец: " + firstName + " "
-                + lastName + ", "
-                + birthday.format(DateTimeFormatter.ofPattern("dd:MM:yy"));
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -54,7 +47,13 @@ public class Owner {
         this.birthday = birthday;
     }
 
-
+    @Override
+    public String toString() {
+        return "Владелец: " + firstName + " "
+                + lastName + ", "
+                + birthday.format(DateTimeFormatter.ofPattern("dd.MM.yy"))
+                + " г.р.";
+    }
 }
 
 

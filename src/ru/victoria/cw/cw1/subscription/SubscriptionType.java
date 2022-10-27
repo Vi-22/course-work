@@ -20,6 +20,9 @@ public enum SubscriptionType {
     }
 
     public void setTime(VisitTime time) {
+        if (time == null) {
+            throw new IllegalArgumentException("time не может быть null");
+        }
         this.time = time;
     }
 
@@ -28,6 +31,14 @@ public enum SubscriptionType {
     }
 
     public void setZone(VisitZone zone) {
+        if (zone==null) {
+            throw new IllegalArgumentException("zone не может быть null");
+        }
         this.zone = zone;
+    }
+
+    @Override
+    public String toString() {
+        return "тип - " + this.name();
     }
 }

@@ -13,7 +13,7 @@ public class VisitTime {
         return fromTime;
     }
 
-    public void setFromTime(LocalTime fromTime) {
+    private void setFromTime(LocalTime fromTime) {
         this.fromTime = fromTime;
     }
 
@@ -21,7 +21,7 @@ public class VisitTime {
         return toTime;
     }
 
-    public void setToTime(LocalTime toTime) {
+    private void setToTime(LocalTime toTime) {
         this.toTime = toTime;
     }
 

@@ -11,23 +11,37 @@ import java.time.LocalTime;
 
 public class Generator {
     public static Subscription generateSubscription() {
-        SubscriptionType types[] = SubscriptionType.values();
+        SubscriptionType[] types = SubscriptionType.values();
         SubscriptionType type = types[(int) (Math.random() * types.length)];
         LocalDate registrationDate = LocalDate.of(2022, (int) (1 + Math.random() * 11),
                 (int) (1 + Math.random() * 27));
-        LocalDate expirationDateOneDay = LocalDate.of(registrationDate.getYear(),
-                registrationDate.getMonthValue(), registrationDate.getDayOfMonth() + 1);
-        LocalDate expirationDateRandom = LocalDate.of(registrationDate.getYear(),
-                (int) ((Math.random()) * (11 - registrationDate.getMonthValue()) +
-                        registrationDate.getMonthValue()), (int) (1 + Math.random() * 27));
+        LocalDate expirationDate = generateRandomExpirationDate(type, registrationDate);
         Owner owner = generateRandomOwner();
         if (type == SubscriptionType.ONE_DAY) {
-            return new Subscription(type, registrationDate, expirationDateOneDay, owner);
+            return new Subscription(type, registrationDate, expirationDate, owner);
         } else {
-            return new Subscription(type, registrationDate, expirationDateRandom, owner);
+            return new Subscription(type, registrationDate, expirationDate, owner);
+
         }
     }
-    public static Owner generateRandomOwner() {
+    private static LocalDate generateRandomExpirationDate(SubscriptionType type, LocalDate registrationDate) {
+        LocalDate expirationDateOneDay =
+                LocalDate.of(registrationDate.getYear(),
+                registrationDate.getMonthValue(),
+                registrationDate.getDayOfMonth() + 1);
+        LocalDate expirationDateRandom =
+                LocalDate.of(registrationDate.getYear() + (int) (Math.random()*10),
+                        (((int) ((Math.random()) * (12 - registrationDate.getMonthValue()))) +
+                        registrationDate.getMonthValue()),
+                        (int) (1 + Math.random() * 27));
+        if (type == SubscriptionType.ONE_DAY) {
+            return expirationDateOneDay;
+        } else {
+            return expirationDateRandom;
+        }
+    }
+
+    private static Owner generateRandomOwner() {
         String[] names = {"Федор", "Александра","Иван","Юлия","Юрий", "Тимофей", "Олег", "Валерий", "Татьяна"};
         String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко", "Шутка", "Маршрутка"};
         String firstName = names[(int) (Math.random() * names.length)];

@@ -81,7 +81,7 @@ public class Fitness {
                 return true;
             }
         }
-        System.out.println("Пока вы не можете зайти. В бассейне зале нет мест");
+        System.out.println("Пока вы не можете зайти. В бассейне нет мест");
         return false;
     }
     private boolean isCorrectDate(Subscription subscription, Exit visit) {

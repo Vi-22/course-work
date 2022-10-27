@@ -4,6 +4,7 @@ import ru.victoria.cw.cw1.fitness.Exit;
 import ru.victoria.cw.cw1.fitness.Fitness;
 import ru.victoria.cw.cw1.generator.Generator;
 import ru.victoria.cw.cw1.subscription.Subscription;
+import ru.victoria.cw.cw1.subscription.SubscriptionType;
 
 public class Application {
     public static void main(String[] args6) {
