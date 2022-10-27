@@ -1,6 +1,6 @@
 package ru.victoria.cw.cw1.fitness;
 
-import ru.victoria.cw.cw1.subscription.Zone;
+import ru.victoria.cw.cw1.subscription.VisitZone;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,9 +9,9 @@ import java.time.format.DateTimeFormatter;
 public class Exit {
     private LocalDate visitDate;
     private LocalTime visitTime;
-    private Zone visitZone;
+    private VisitZone visitZone;
 
-    public Exit(LocalDate visitDate, LocalTime visitTime, Zone visitZone){
+    public Exit(LocalDate visitDate, LocalTime visitTime, VisitZone visitZone){
         this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
         this.setVisitZone(visitZone);
@@ -33,11 +33,11 @@ public class Exit {
         this.visitTime = visitTime;
     }
 
-    public Zone getVisitZone() {
+    public VisitZone getVisitZone() {
         return visitZone;
     }
 
-    public void setVisitZone(Zone visitZone) {
+    public void setVisitZone(VisitZone visitZone) {
         this.visitZone = visitZone;
     }
 

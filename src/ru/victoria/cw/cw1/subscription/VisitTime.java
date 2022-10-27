@@ -2,10 +2,10 @@ package ru.victoria.cw.cw1.subscription;
 
 import java.time.LocalTime;
 
-public class Time {
+public class VisitTime {
     private LocalTime fromTime;
     private LocalTime toTime;
-    public Time(LocalTime fromTime, LocalTime toTime) {
+    public VisitTime(LocalTime fromTime, LocalTime toTime) {
         this.setFromTime(fromTime);
         this.setToTime(toTime);
     }

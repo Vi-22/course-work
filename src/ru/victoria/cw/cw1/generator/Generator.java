@@ -1,18 +1,18 @@
 package ru.victoria.cw.cw1.generator;
 
 import ru.victoria.cw.cw1.fitness.Exit;
-import ru.victoria.cw.cw1.subscription.Zone;
+import ru.victoria.cw.cw1.subscription.VisitZone;
 import ru.victoria.cw.cw1.subscription.Owner;
 import ru.victoria.cw.cw1.subscription.Subscription;
-import ru.victoria.cw.cw1.subscription.Type;
+import ru.victoria.cw.cw1.subscription.SubscriptionType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Generator {
     public static Subscription generateSubscription() {
-        Type types[] = Type.values();
-        Type type = types[(int) (Math.random() * types.length)];
+        SubscriptionType types[] = SubscriptionType.values();
+        SubscriptionType type = types[(int) (Math.random() * types.length)];
         LocalDate registrationDate = LocalDate.of(2022, (int) (1 + Math.random() * 11),
                 (int) (1 + Math.random() * 27));
         LocalDate expirationDateOneDay = LocalDate.of(registrationDate.getYear(),
@@ -21,7 +21,7 @@ public class Generator {
                 (int) ((Math.random()) * (11 - registrationDate.getMonthValue()) +
                         registrationDate.getMonthValue()), (int) (1 + Math.random() * 27));
         Owner owner = generateRandomOwner();
-        if (type == Type.ONE_DAY) {
+        if (type == SubscriptionType.ONE_DAY) {
             return new Subscription(type, registrationDate, expirationDateOneDay, owner);
         } else {
             return new Subscription(type, registrationDate, expirationDateRandom, owner);
@@ -39,18 +39,18 @@ public class Generator {
     public static Exit generateRandomExit () {
         LocalDate exitDate = LocalDate.now();
         LocalTime exitTime = LocalTime.now();
-        Zone exitZone = generateRandomZone();
+        VisitZone exitZone = generateRandomZone();
         return new Exit(exitDate,exitTime,exitZone);
     }
-    public static Zone generateRandomZone(){
+    public static VisitZone generateRandomZone(){
         int random = (int) (Math.random() * 3);
         if (random == 0) {
-            return new Zone(true, false, false);
+            return new VisitZone(true, false, false);
         }
         else if (random == 1) {
-            return new Zone(false, true,false);
+            return new VisitZone(false, true,false);
         } else {
-            return new Zone(false, false,true);
+            return new VisitZone(false, false,true);
         }
     }
 }

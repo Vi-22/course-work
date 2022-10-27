@@ -3,23 +3,23 @@ package ru.victoria.cw.cw1.subscription;
 import java.time.LocalDate;
 
 public class Subscription {
- private Type type;
+ private SubscriptionType type;
  private LocalDate registrationDate;
  private LocalDate expirationDate;
  private Owner owner;
 
- public Subscription(Type type, LocalDate registrationDate, LocalDate expirationDate, Owner owner) {
+ public Subscription(SubscriptionType type, LocalDate registrationDate, LocalDate expirationDate, Owner owner) {
   this.setType(type);
   this.setRegistrationDate(registrationDate);
   this.setExpirationDate(expirationDate);
   this.setOwner(owner);
  }
 
- public Type getType() {
+ public SubscriptionType getType() {
   return type;
  }
 
- public void setType(Type type) {
+ public void setType(SubscriptionType type) {
   this.type = type;
  }
 

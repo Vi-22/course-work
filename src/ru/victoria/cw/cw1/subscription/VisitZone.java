@@ -1,10 +1,10 @@
 package ru.victoria.cw.cw1.subscription;
 
-public class Zone {
+public class VisitZone {
     private boolean isGym;
     private boolean isPool;
     private boolean isGroupLessons;
-    public Zone(boolean  isGym, boolean isPool, boolean isGroupLessons) {
+    public VisitZone(boolean  isGym, boolean isPool, boolean isGroupLessons) {
         this.setGym(isGym);
         this.setPool(isPool);
         this.setGroupLessons(isGroupLessons);
