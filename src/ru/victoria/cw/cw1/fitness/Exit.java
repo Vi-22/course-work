@@ -11,12 +11,15 @@ public class Exit {
     private LocalTime visitTime;
     private VisitZone visitZone;
 
-    public Exit(LocalDate visitDate, LocalTime visitTime, VisitZone visitZone){
+    public Exit(LocalDate visitDate, LocalTime visitTime, VisitZone visitZone) {
         this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
         this.setVisitZone(visitZone);
     }
-    public Exit(){}
+
+    public Exit() {
+    }
+
     public LocalDate getVisitDate() {
         return visitDate;
     }
@@ -46,7 +49,7 @@ public class Exit {
     public String toString() {
         return
                 visitDate.format(DateTimeFormatter.ofPattern("dd.MM.yy")) +
-                " в " + visitTime.format(DateTimeFormatter.ofPattern("HH:mm")) +
-                ": вход в " + visitZone;
+                        " в " + visitTime.format(DateTimeFormatter.ofPattern("HH:mm")) +
+                        ": вход в " + visitZone;
     }
 }

@@ -20,7 +20,7 @@ public class Fitness {
     }
 
     public void setGymSubscriptions(Subscription[] gymSubscriptions) {
-        this.gymSubscriptions=gymSubscriptions;
+        this.gymSubscriptions = gymSubscriptions;
     }
 
     public Subscription[] getPoolSubscriptions() {
@@ -38,25 +38,27 @@ public class Fitness {
     public void setGroupLessonsSubscriptions(Subscription[] groupLessonsSubscriptions) {
         this.groupLessonsSubscriptions = groupLessonsSubscriptions;
     }
+
     private int foundFreePlaces(Subscription[] subscriptions) {
         int i = 0;
-        while (subscriptions[i]!=null&&i<subscriptions.length-1) {
+        while (subscriptions[i] != null && i < subscriptions.length - 1) {
             i++;
         }
         return i;
     }
+
     private boolean isEnoughPlaces(Exit visit) {
-        if (visit.getVisitZone().getIsGym()&&isPlacesInGym()) {
+        if (visit.getVisitZone().getIsGym() && isPlacesInGym()) {
             return true;
-        } else if (visit.getVisitZone().getIsPool()&&isPlacesInPool()) {
+        } else if (visit.getVisitZone().getIsPool() && isPlacesInPool()) {
             return true;
-        } else if (visit.getVisitZone().getIsGroupLessons()&&isPlacesInGroupLessons()) {
+        } else if (visit.getVisitZone().getIsGroupLessons() && isPlacesInGroupLessons()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     private boolean isPlacesInGym() {
         for (Subscription subscription : gymSubscriptions) {
             if (subscription == null) {
@@ -66,6 +68,7 @@ public class Fitness {
         System.out.println("Пока вы не можете зайти. В тренажерном зале нет мест");
         return false;
     }
+
     private boolean isPlacesInPool() {
         for (Subscription subscription : poolSubscriptions) {
             if (subscription == null) {
@@ -75,6 +78,7 @@ public class Fitness {
         System.out.println("Пока вы не можете зайти. В бассейне нет мест");
         return false;
     }
+
     private boolean isPlacesInGroupLessons() {
         for (Subscription subscription : groupLessonsSubscriptions) {
             if (subscription == null) {
@@ -84,6 +88,7 @@ public class Fitness {
         System.out.println("Пока вы не можете зайти. В бассейне нет мест");
         return false;
     }
+
     private boolean isCorrectDate(Subscription subscription, Exit visit) {
         if (subscription.getRegistrationDate().isBefore(visit.getVisitDate())) {
             if (subscription.getExpirationDate().isAfter(visit.getVisitDate())) {
@@ -97,30 +102,32 @@ public class Fitness {
             return false;
         }
     }
+
     private boolean isCorrectZone(Subscription subscription, Exit visit) {
         if (visit.getVisitZone().getIsGym()) {
             if (subscription.getType().getZone().getIsGym()) {
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
+                System.out.println("Ваш абонемент не включает тренажерный зал");
                 return false;
             }
         } else if (visit.getVisitZone().getIsPool()) {
             if (subscription.getType().getZone().getIsPool()) {
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
+                System.out.println("Ваш абонемент не включает бассейн");
                 return false;
             }
         } else {
             if (subscription.getType().getZone().getIsGroupLessons()) {
                 return true;
             } else {
-                System.out.println(subscription.getOwner() + "Ваш абонемент не включает эту зону");
+                System.out.println("Ваш абонемент не включает групповые занятия");
                 return false;
             }
         }
     }
+
     private boolean isCorrectTime(Subscription subscription, Exit visit) {
         if (subscription.getType().getTime().getFromTime().isBefore(visit.getVisitTime())) {
             if (subscription.getType().getTime().getToTime().isAfter(visit.getVisitTime())) {
@@ -134,15 +141,17 @@ public class Fitness {
             return false;
         }
     }
+
     private boolean isAccess(Subscription subscription, Exit visit) {
-        if (isCorrectDate(subscription,visit) && isCorrectTime(subscription, visit)
-                && isCorrectZone(subscription, visit)&&isEnoughPlaces(visit)) {
+        if (isCorrectDate(subscription, visit) && isCorrectTime(subscription, visit)
+                && isCorrectZone(subscription, visit) && isEnoughPlaces(visit)) {
             System.out.println("Вы успешно вошли");
             return true;
         } else {
             return false;
         }
     }
+
     public void setExitToFitness(Subscription subscription, Exit visit) {
         if (isAccess(subscription, visit)) {
             if (visit.getVisitZone().getIsGym()) {
@@ -154,6 +163,7 @@ public class Fitness {
             }
         }
     }
+
     public void fitnessCloused() {
         for (int i = 0; i < this.gymSubscriptions.length; i++) {
             this.gymSubscriptions[i] = null;
@@ -165,7 +175,7 @@ public class Fitness {
     public void printToList() {
         System.out.println("Тренажерный зал:");
         for (int i = 0; i < this.gymSubscriptions.length; i++) {
-            if (Fitness.this.gymSubscriptions[i]==null) {
+            if (Fitness.this.gymSubscriptions[i] == null) {
                 System.out.println("свободное место");
             } else {
                 System.out.println(this.gymSubscriptions[i]);
@@ -181,7 +191,7 @@ public class Fitness {
         }
         System.out.println("Зал групповых тренировок:");
         for (int i = 0; i < groupLessonsSubscriptions.length; i++) {
-            if (this.gymSubscriptions[i]==null) {
+            if (this.gymSubscriptions[i] == null) {
                 System.out.println("свободное место");
             } else {
                 System.out.println(this.groupLessonsSubscriptions[i]);

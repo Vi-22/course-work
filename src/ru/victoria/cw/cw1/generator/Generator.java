@@ -24,15 +24,16 @@ public class Generator {
 
         }
     }
+
     private static LocalDate generateRandomExpirationDate(SubscriptionType type, LocalDate registrationDate) {
         LocalDate expirationDateOneDay =
                 LocalDate.of(registrationDate.getYear(),
-                registrationDate.getMonthValue(),
-                registrationDate.getDayOfMonth() + 1);
+                        registrationDate.getMonthValue(),
+                        registrationDate.getDayOfMonth() + 1);
         LocalDate expirationDateRandom =
-                LocalDate.of(registrationDate.getYear() + (int) (Math.random()*10),
+                LocalDate.of(registrationDate.getYear() + (int) (Math.random() * 10),
                         (((int) ((Math.random()) * (12 - registrationDate.getMonthValue()))) +
-                        registrationDate.getMonthValue()),
+                                registrationDate.getMonthValue()),
                         (int) (1 + Math.random() * 27));
         if (type == SubscriptionType.ONE_DAY) {
             return expirationDateOneDay;
@@ -42,29 +43,30 @@ public class Generator {
     }
 
     private static Owner generateRandomOwner() {
-        String[] names = {"Федор", "Александра","Иван","Юлия","Юрий", "Тимофей", "Олег", "Валерий", "Татьяна"};
+        String[] names = {"Федор", "Александра", "Иван", "Юлия", "Юрий", "Тимофей", "Олег", "Валерий", "Татьяна"};
         String[] surNames = {"Иванко", "Кот", "Кирпич", "Тренировко", "Болтайко", "Шутка", "Маршрутка"};
         String firstName = names[(int) (Math.random() * names.length)];
         String lastName = surNames[(int) (Math.random() * surNames.length)];
         LocalDate birthday = LocalDate.of((int) (1940 + Math.random() * 50),
-                (int) (1+ Math.random() * 11), (int) (1+Math.random() * 27));
-        return new Owner(firstName,lastName, birthday);
+                (int) (1 + Math.random() * 11), (int) (1 + Math.random() * 27));
+        return new Owner(firstName, lastName, birthday);
     }
-    public static Exit generateRandomExit () {
+
+    public static Exit generateRandomExit() {
         LocalDate exitDate = LocalDate.now();
         LocalTime exitTime = LocalTime.now();
         VisitZone exitZone = generateRandomZone();
-        return new Exit(exitDate,exitTime,exitZone);
+        return new Exit(exitDate, exitTime, exitZone);
     }
-    public static VisitZone generateRandomZone(){
+
+    public static VisitZone generateRandomZone() {
         int random = (int) (Math.random() * 3);
         if (random == 0) {
             return new VisitZone(true, false, false);
-        }
-        else if (random == 1) {
-            return new VisitZone(false, true,false);
+        } else if (random == 1) {
+            return new VisitZone(false, true, false);
         } else {
-            return new VisitZone(false, false,true);
+            return new VisitZone(false, false, true);
         }
     }
 }
