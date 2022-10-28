@@ -1,6 +1,6 @@
 package ru.victoria.cw.cw1.generator;
 
-import ru.victoria.cw.cw1.fitness.Exit;
+import ru.victoria.cw.cw1.fitness.Entrance;
 import ru.victoria.cw.cw1.subscription.VisitZone;
 import ru.victoria.cw.cw1.subscription.Owner;
 import ru.victoria.cw.cw1.subscription.Subscription;
@@ -52,11 +52,11 @@ public class Generator {
         return new Owner(firstName, lastName, birthday);
     }
 
-    public static Exit generateRandomExit() {
+    public static Entrance generateRandomExit() {
         LocalDate exitDate = LocalDate.now();
         LocalTime exitTime = LocalTime.now();
         VisitZone exitZone = generateRandomZone();
-        return new Exit(exitDate, exitTime, exitZone);
+        return new Entrance(exitDate, exitTime, exitZone);
     }
 
     public static VisitZone generateRandomZone() {

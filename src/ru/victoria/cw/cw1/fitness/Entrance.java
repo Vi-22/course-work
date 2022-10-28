@@ -6,18 +6,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Exit {
+public class Entrance {
     private LocalDate visitDate;
     private LocalTime visitTime;
     private VisitZone visitZone;
 
-    public Exit(LocalDate visitDate, LocalTime visitTime, VisitZone visitZone) {
+    public Entrance(LocalDate visitDate, LocalTime visitTime, VisitZone visitZone) {
         this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
         this.setVisitZone(visitZone);
     }
 
-    public Exit() {
+    public Entrance() {
     }
 
     public LocalDate getVisitDate() {

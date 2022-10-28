@@ -47,7 +47,7 @@ public class Fitness {
         return i;
     }
 
-    private boolean isEnoughPlaces(Exit visit) {
+    private boolean isEnoughPlaces(Entrance visit) {
         if (visit.getVisitZone().getIsGym() && isPlacesInGym()) {
             return true;
         } else if (visit.getVisitZone().getIsPool() && isPlacesInPool()) {
@@ -89,7 +89,7 @@ public class Fitness {
         return false;
     }
 
-    private boolean isCorrectDate(Subscription subscription, Exit visit) {
+    private boolean isCorrectDate(Subscription subscription, Entrance visit) {
         if (subscription.getRegistrationDate().isBefore(visit.getVisitDate())) {
             if (subscription.getExpirationDate().isAfter(visit.getVisitDate())) {
                 return true;
@@ -103,7 +103,7 @@ public class Fitness {
         }
     }
 
-    private boolean isCorrectZone(Subscription subscription, Exit visit) {
+    private boolean isCorrectZone(Subscription subscription, Entrance visit) {
         if (visit.getVisitZone().getIsGym()) {
             if (subscription.getType().getZone().getIsGym()) {
                 return true;
@@ -128,7 +128,7 @@ public class Fitness {
         }
     }
 
-    private boolean isCorrectTime(Subscription subscription, Exit visit) {
+    private boolean isCorrectTime(Subscription subscription, Entrance visit) {
         if (subscription.getType().getTime().getFromTime().isBefore(visit.getVisitTime())) {
             if (subscription.getType().getTime().getToTime().isAfter(visit.getVisitTime())) {
                 return true;
@@ -142,7 +142,7 @@ public class Fitness {
         }
     }
 
-    private boolean isAccess(Subscription subscription, Exit visit) {
+    private boolean isAccess(Subscription subscription, Entrance visit) {
         if (isCorrectDate(subscription, visit) && isCorrectTime(subscription, visit)
                 && isCorrectZone(subscription, visit) && isEnoughPlaces(visit)) {
             System.out.println("Вы успешно вошли");
@@ -152,7 +152,7 @@ public class Fitness {
         }
     }
 
-    public void setExitToFitness(Subscription subscription, Exit visit) {
+    public void setExitToFitness(Subscription subscription, Entrance visit) {
         if (isAccess(subscription, visit)) {
             if (visit.getVisitZone().getIsGym()) {
                 this.gymSubscriptions[foundFreePlaces(gymSubscriptions)] = subscription;

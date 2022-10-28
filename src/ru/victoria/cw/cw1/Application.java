@@ -1,10 +1,9 @@
 package ru.victoria.cw.cw1;
 
-import ru.victoria.cw.cw1.fitness.Exit;
+import ru.victoria.cw.cw1.fitness.Entrance;
 import ru.victoria.cw.cw1.fitness.Fitness;
 import ru.victoria.cw.cw1.generator.Generator;
 import ru.victoria.cw.cw1.subscription.Subscription;
-import ru.victoria.cw.cw1.subscription.SubscriptionType;
 
 public class Application {
     public static void main(String[] args6) {
@@ -16,7 +15,7 @@ public class Application {
         for (int i = 0; i < clientSubscriptions.length; i++) {
             clientSubscriptions[i] = Generator.generateSubscription();
             System.out.println(clientSubscriptions[i]);
-            Exit visit = Generator.generateRandomExit();
+            Entrance visit = Generator.generateRandomExit();
             System.out.println(visit);
             fitness.setExitToFitness(clientSubscriptions[i], visit);
         }
