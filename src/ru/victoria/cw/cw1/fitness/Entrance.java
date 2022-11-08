@@ -17,9 +17,6 @@ public class Entrance {
         this.setVisitZone(visitZone);
     }
 
-    public Entrance() {
-    }
-
     public LocalDate getVisitDate() {
         return visitDate;
     }

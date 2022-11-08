@@ -94,7 +94,7 @@ public class Fitness {
                 return true;
             }
         }
-        System.out.println("Пока вы не можете зайти. В бассейне нет мест");
+        System.out.println("Пока вы не можете зайти. В зале групповых тренировок нет мест");
         return false;
     }
 
