@@ -52,7 +52,7 @@ public class Generator {
         return new Owner(firstName, lastName, birthday);
     }
 
-    public static Entrance generateRandomExit() {
+    public static Entrance generateRandomVisit() {
         LocalDate exitDate = LocalDate.now();
         LocalTime exitTime = LocalTime.now();
         VisitZone exitZone = generateRandomZone();

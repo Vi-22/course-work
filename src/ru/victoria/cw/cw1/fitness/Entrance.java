@@ -25,6 +25,9 @@ public class Entrance {
     }
 
     public void setVisitDate(LocalDate visitDate) {
+        if (visitDate==null) {
+            throw new IllegalArgumentException("Не задана дата визита");
+        }
         this.visitDate = visitDate;
     }
 
@@ -33,6 +36,9 @@ public class Entrance {
     }
 
     public void setVisitTime(LocalTime visitTime) {
+        if (visitTime==null) {
+            throw new IllegalArgumentException("Не задано время визита");
+        }
         this.visitTime = visitTime;
     }
 
@@ -41,6 +47,9 @@ public class Entrance {
     }
 
     public void setVisitZone(VisitZone visitZone) {
+        if (visitZone==null||!(visitZone.getIsGym()||visitZone.getIsPool()||visitZone.getIsGroupLessons())) {
+            throw new IllegalArgumentException("Не задана зона визита");
+        }
         this.visitZone = visitZone;
     }
 

@@ -20,6 +20,9 @@ public class Fitness {
     }
 
     public void setGymSubscriptions(Subscription[] gymSubscriptions) {
+        if (gymSubscriptions == null) {
+            throw new IllegalArgumentException("gymSubscriptions не может быть null");
+        }
         this.gymSubscriptions = gymSubscriptions;
     }
 
@@ -28,6 +31,9 @@ public class Fitness {
     }
 
     public void setPoolSubscriptions(Subscription[] poolSubscriptions) {
+        if (poolSubscriptions == null) {
+            throw new IllegalArgumentException("poolSubscriptions не может быть null");
+        }
         this.poolSubscriptions = poolSubscriptions;
     }
 
@@ -36,10 +42,13 @@ public class Fitness {
     }
 
     public void setGroupLessonsSubscriptions(Subscription[] groupLessonsSubscriptions) {
+        if (groupLessonsSubscriptions == null) {
+            throw new IllegalArgumentException("groupLessonsSubscriptions не может быть null");
+        }
         this.groupLessonsSubscriptions = groupLessonsSubscriptions;
     }
 
-    private int foundFreePlaces(Subscription[] subscriptions) {
+    private int foundFreePlaceForRecord(Subscription[] subscriptions) {
         int i = 0;
         while (subscriptions[i] != null && i < subscriptions.length - 1) {
             i++;
@@ -155,23 +164,22 @@ public class Fitness {
     public void setExitToFitness(Subscription subscription, Entrance visit) {
         if (isAccess(subscription, visit)) {
             if (visit.getVisitZone().getIsGym()) {
-                this.gymSubscriptions[foundFreePlaces(gymSubscriptions)] = subscription;
+                this.gymSubscriptions[foundFreePlaceForRecord(gymSubscriptions)] = subscription;
             } else if (visit.getVisitZone().getIsPool()) {
-                this.poolSubscriptions[foundFreePlaces(poolSubscriptions)] = subscription;
+                this.poolSubscriptions[foundFreePlaceForRecord(poolSubscriptions)] = subscription;
             } else {
-                this.groupLessonsSubscriptions[foundFreePlaces(groupLessonsSubscriptions)] = subscription;
+                this.groupLessonsSubscriptions[foundFreePlaceForRecord(groupLessonsSubscriptions)] = subscription;
             }
         }
     }
 
-    public void fitnessCloused() {
+    public void fitnessClosed() {
         for (int i = 0; i < this.gymSubscriptions.length; i++) {
             this.gymSubscriptions[i] = null;
             this.poolSubscriptions[i] = null;
             this.groupLessonsSubscriptions[i] = null;
         }
     }
-
     public void printToList() {
         System.out.println("Тренажерный зал:");
         for (int i = 0; i < this.gymSubscriptions.length; i++) {

@@ -31,8 +31,8 @@ public enum SubscriptionType {
     }
 
     public void setZone(VisitZone zone) {
-        if (zone == null) {
-            throw new IllegalArgumentException("zone не может быть null");
+        if (zone == null||!(zone.getIsPool()||zone.getIsGym()||zone.getIsGroupLessons())) {
+            throw new IllegalArgumentException("Зона действия абонемента не задана");
         }
         this.zone = zone;
     }

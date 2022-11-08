@@ -15,12 +15,12 @@ public class Application {
         for (int i = 0; i < clientSubscriptions.length; i++) {
             clientSubscriptions[i] = Generator.generateSubscription();
             System.out.println(clientSubscriptions[i]);
-            Entrance visit = Generator.generateRandomExit();
+            Entrance visit = Generator.generateRandomVisit();
             System.out.println(visit);
             fitness.setExitToFitness(clientSubscriptions[i], visit);
         }
         fitness.printToList();
-        fitness.fitnessCloused();
+        fitness.fitnessClosed();
         fitness.printToList();
     }
 }

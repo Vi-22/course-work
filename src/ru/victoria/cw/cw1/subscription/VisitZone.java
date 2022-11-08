@@ -35,7 +35,7 @@ public class VisitZone {
         this.isGroupLessons = isGroupLessons;
     }
 
-    private String getTrueZoneName() {
+    public String getTrueZoneName() {
         if (isGym && isPool && isGroupLessons)
             return "тренажeрный зал, бассейн и зал групповых тренировок";
         else if (isGym && isPool)

@@ -16,6 +16,9 @@ public class VisitTime {
     }
 
     private void setFromTime(LocalTime fromTime) {
+        if (fromTime==null) {
+            throw new IllegalArgumentException("fromTime не может быть null");
+        }
         this.fromTime = fromTime;
     }
 
@@ -24,6 +27,9 @@ public class VisitTime {
     }
 
     private void setToTime(LocalTime toTime) {
+        if (toTime==null) {
+            throw new IllegalArgumentException("to time не может быть null");
+        }
         this.toTime = toTime;
     }
 
