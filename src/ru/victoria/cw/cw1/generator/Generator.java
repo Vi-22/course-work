@@ -8,38 +8,48 @@ import ru.victoria.cw.cw1.subscription.SubscriptionType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.YearMonth;
+import java.util.Calendar;
 
 public class Generator {
     public static Subscription generateSubscription() {
         SubscriptionType[] types = SubscriptionType.values();
         SubscriptionType type = types[(int) (Math.random() * types.length)];
-        LocalDate registrationDate = LocalDate.of(2022, (int) (1 + Math.random() * 11),
-                (int) (1 + Math.random() * 27));
+        LocalDate registrationDate = generateRandomRegistrationDate();
         LocalDate expirationDate = generateRandomExpirationDate(type, registrationDate);
         Owner owner = generateRandomOwner();
-        if (type == SubscriptionType.ONE_DAY) {
-            return new Subscription(type, registrationDate, expirationDate, owner);
-        } else {
-            return new Subscription(type, registrationDate, expirationDate, owner);
-
+        return new Subscription(type, registrationDate, expirationDate, owner);
         }
+    private static LocalDate generateRandomRegistrationDate() {
+        int year = (int) (2000 + Math.random() * 22);
+        int month = (int) (1 + Math.random() * 12);
+        int day =  (int) (1 + Math.random() * (Month.of(month).maxLength()-1));
+        return LocalDate.of(year,month,day);
     }
-
     private static LocalDate generateRandomExpirationDate(SubscriptionType type, LocalDate registrationDate) {
-        LocalDate expirationDateOneDay =
-                LocalDate.of(registrationDate.getYear(),
-                        registrationDate.getMonthValue(),
-                        registrationDate.getDayOfMonth() + 1);
-        LocalDate expirationDateRandom =
-                LocalDate.of(registrationDate.getYear() + (int) (Math.random() * 10),
-                        (((int) ((Math.random()) * (12 - registrationDate.getMonthValue()))) +
-                                registrationDate.getMonthValue()),
-                        (int) (1 + Math.random() * 27));
+        int year;
+        int month;
+        int day;
         if (type == SubscriptionType.ONE_DAY) {
-            return expirationDateOneDay;
+           year = registrationDate.getYear();
+           month = registrationDate.getMonthValue();
+           day = registrationDate.getDayOfMonth() + 1;
         } else {
-            return expirationDateRandom;
+            year = registrationDate.getYear() + (int) (Math.random() * 10);
+            if (registrationDate.getYear()==year) {
+                month = registrationDate.getMonthValue() + (int) (Math.random() * (12 - registrationDate.getMonthValue()));
+            } else {
+                month = (int) (Math.random() * 12) + 1;
+            }
+            int daysInMonth = YearMonth.of(year,month).lengthOfMonth();
+            if (registrationDate.getYear()==year&&registrationDate.getMonthValue()==month) {
+                day = (int) (1 + Math.random() * (daysInMonth - registrationDate.getDayOfMonth())) + registrationDate.getDayOfMonth();
+            } else {
+                day = (int) (1 + Math.random() * (daysInMonth));
+            }
         }
+        return LocalDate.of(year,month,day);
     }
 
     private static Owner generateRandomOwner() {

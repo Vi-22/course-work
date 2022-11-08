@@ -11,7 +11,7 @@ public class Application {
         Subscription[] poolSubscriptions = new Subscription[20];
         Subscription[] groupLessonsSubscriptions = new Subscription[20];
         Fitness fitness = new Fitness(gymSubscriptions, poolSubscriptions, groupLessonsSubscriptions);
-        Subscription[] clientSubscriptions = new Subscription[(int) (50 + Math.random() * 300)];
+        Subscription[] clientSubscriptions = new Subscription[(int) (50 + Math.random() * 700)];
         for (int i = 0; i < clientSubscriptions.length; i++) {
             clientSubscriptions[i] = Generator.generateSubscription();
             System.out.println(clientSubscriptions[i]);
